@@ -144,6 +144,14 @@ const promptContributing = contributingData => {
             type: 'input',
             name: 'contributingTopGuidelines',
             message: 'Enter any intro text to your contributing section.',
+            validate: nameInput => {
+                if (nameInput) {
+                  return true;
+                } else {
+                  console.log('You need to enter your contributing data!');
+                  return false;
+                }
+              }
           },
           {
             type: 'input',

@@ -43,7 +43,13 @@ const licenseBadge = function renderLicenseBadge(projectLicense) {
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+const LicenseLink = function renderLicenseLink (projectLicense) {
+    if (projectLicense) {
+        LicenseLink = "  - [License] (#License)"
+    } else {
+        licenceLink = ""
+    }
+}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
@@ -83,12 +89,84 @@ const licenseSection = function renderLicenseSection(projectLicense) {
     
     } else if (projectLicense === 'The Unlicense') {
         licenseSection = "## Licensing<br><br>This project has a [The Unlicense](https://unlicense.org/) license."
+    
     } else {
         licenseSection = ""
     }
 }
 
-function renderContributingSection(){}
+const contributingSection = function renderContributingSection(contributingData){
+    if (contributingData.contributors && contributingData.pullRequestGuidelines && contributingData.codeOfConduct){
+        
+        contributingSection = `## Contributing
+        ${contributingData.contributingTopGuidelines}
+
+        ### Contributors
+        ${contributingData.contrubutors}
+        
+        ### Pull Request Guidelines
+        ${contributingData.pullRequestGuideline}
+
+        ### Code of Conduct
+        ${contributingData.codeOfConduct}
+        
+        `
+    } else if (contributingData.contributors && contributingData.pullRequestGuidelines) {
+        contributingSection = `## Contributing
+        ${contributingData.contributingTopGuidelines}
+
+        ### Contributors
+        ${contributingData.contrubutors}
+        
+        ### Pull Request Guidelines
+        ${contributingData.pullRequestGuideline} `
+    } else if (contributingData.contributors && contributingData.codeOfConduct) {
+        contributingSection = `## Contributing
+        ${contributingData.contributingTopGuidelines}
+
+        ### Contributors
+        ${contributingData.contrubutors}
+
+        ### Code of Conduct
+        ${contributingData.codeOfConduct}
+        
+        `
+    } else if (contributingData.contributors) {
+        contributingSection = `## Contributing
+        ${contributingData.contributingTopGuidelines}
+
+        ### Contributors
+        ${contributingData.contrubutors}
+        `
+    } else if (contributingData.pullRequestGuidelines && contributingData.codeOfConduct) {
+        contributingSection = `## Contributing
+        ${contributingData.contributingTopGuidelines}
+        
+        ### Pull Request Guidelines
+        ${contributingData.pullRequestGuideline}
+
+        ### Code of Conduct
+        ${contributingData.codeOfConduct}
+        
+        `
+    } else if (contributingData.pullRequestGuidelines) {
+        contributingSection = `## Contributing
+        ${contributingData.contributingTopGuidelines}
+        
+        ### Pull Request Guidelines
+        ${contributingData.pullRequestGuideline}`
+    } else if (contributingData.codeOfConduct) {
+        contributingSection = `## Contributing
+        ${contributingData.contributingTopGuidelines}
+        
+        ### Code of Conduct
+        ${contributingData.codeOfConduct}`
+
+    } else {
+        contributingSection = `## Contributing
+        ${contributingData.contributingTopGuidelines}`
+    }
+}
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
@@ -100,12 +178,12 @@ function generateMarkdown(data) {
   ${projectData.projectDescription}
 
   ## Table of Contents
-  1. [Installation] (#Installation)
-  2. [Usage] (#Usage)
-  3. [License] (#License)
-  4. [Contributing] (#Contributing)
-  5. [Tests] (#Tests)
-  6. [Questions] (#Questions)
+  - [Installation] (#Installation)
+  - [Usage] (#Usage)
+  ${LicenseLink}
+  - [Contributing] (#Contributing)
+  - [Tests] (#Tests)
+  - [Questions] (#Questions)
 
   ## Installation
   ${projectData.projectInstallation}
@@ -116,6 +194,8 @@ function generateMarkdown(data) {
   ${licenseSection}
 
   ## Contributing
+
+  ${contributingSection}
 
   ## Tests
 
