@@ -69,16 +69,8 @@ const promptUser = projectData => {
           {
             type: 'list',
             name: 'projectLicence',
-            message: 'What licence would you like to apply to your project? (Required)',
+            message: 'What licence would you like to apply to your project?',
             choices: ['Apacge License 2.0', 'GNU General Public License v3.0', 'MIT License', 'BSD 2-Clause "Simplified" License', 'BSD 3-Clause "New" or "Revised" License', 'Boost Software License 1.0', 'Creative Commons Zero v1.0 Universal', 'Eclipse Public License 2.0', 'GNU Affero General Public License v3.0', 'GNU General Public License v2.0', 'GNU Lesser General Public License v2.1', 'Mozilla Public License 2.0', 'The Unlicense'],
-            validate: nameInput => {
-              if (nameInput) {
-                return true;
-              } else {
-                console.log('You need to select a license!');
-                return false;
-              }
-            }
           },
           {
             type: 'input',
@@ -105,6 +97,11 @@ const promptUser = projectData => {
                 return false;
               }
             }
+          },
+          {
+              type: 'input',
+              name: 'questionHandling',
+              message: 'What should someone do if they have any questions about your project?'
           },
           {
             type: 'input',
@@ -147,6 +144,11 @@ const promptContributing = contributingData => {
             type: 'input',
             name: 'contributingTopGuidelines',
             message: 'Enter any intro text to your contributing section.',
+          },
+          {
+            type: 'input',
+            name: 'contributors',
+            message: 'Who contributed to this project?'
           },
           {
             type: 'confirm',

@@ -8,7 +8,46 @@ function renderLicenseLink(license) {}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {}
+const licenseBadge = function renderLicenseSection(license) {
+    if (projectLicense === 'Apache License 2.0') {
+        licenseBadge = "[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)"
+
+     } else if (projectLicense === 'GNU General Public License v3.0') {
+        licenseBadge = "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)"
+     
+    } else if (projectLicense === 'MIT License') {
+        licenseBadge = "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)"
+    
+    } else if (projectLicense === 'BSD 2-Clause "Simplified" License') {
+        licenseBadge = "[![License](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)"
+    
+    } else if (projectLicense === 'BSD 3-Clause "New" or "Revised" License') {
+        licenseBadge = "[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)"
+    
+    } else if (projectLicense === 'Boost Software License 1.0') {
+        licenseBadge = "[![License](https://img.shields.io/badge/License-Boost%201.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)"
+    
+    } else if (projectLicense === 'Creative Commons Zero v1.0 Universal') {
+        licenseBadge = "[![License: CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)"
+    
+    } else if (projectLicense === 'Eclipse Public License 2.0') {
+        licenseBadge = "[![License](https://img.shields.io/badge/License-EPL%201.0-red.svg)](https://opensource.org/licenses/EPL-1.0)"
+    
+    } else if (projectLicense === 'GNU Affero General Public License v3.0') {
+        licenseBadge = "[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)"
+    
+    } else if (projectLicense === 'GNU General Public License v2.0') {
+        licenseBadge = "[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)"
+    
+    } else if (projectLicense === 'Mozilla Public License 2.0') {
+        licenseBadge = "[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)"
+    
+    } else if (projectLicense === 'The Unlicense') {
+        licenseBadge = "[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)"
+    } else {
+        licenseBadge = ""
+    }
+}
 
 function renderContributingSection(){}
 
@@ -16,16 +55,18 @@ function renderContributingSection(){}
 function generateMarkdown(data) {
   return `# ${projectData.projectTitle}
 
+  ${licenseBadge}
+
   ## Description
   ${projectData.projectDescription}
 
   ## Table of Contents
-  1. Installation
-  2. Usage
-  3. License
-  4. Contributing
-  5. Tests
-  6. Questions
+  1. [Installation] (#Installation)
+  2. [Usage] (#Usage)
+  3. [License] (#License)
+  4. [Contributing] (#Contributing)
+  5. [Tests] (#Tests)
+  6. [Questions] (#Questions)
 
   ## Installation
   ${projectData.projectInstallation}
@@ -40,7 +81,11 @@ function generateMarkdown(data) {
   ## Tests
 
   ## Questions
-  If you have questions about this project, please reach me by email at [${projectData.projectOwnerEmail}](mailto:${projectData.projectOwnerEmail}). You can find me on GitHub [here](https://github.com/${projectData.projectOwnerGitUserName}).
+  If you have questions about this project:
+  ${projectData.questionHandling}
+
+  ### Project Owner Contact Information
+  [${projectData.projectOwnerEmail}](mailto:${projectData.projectOwnerEmail}). You can find me on GitHub [here](https://github.com/${projectData.projectOwnerGitUserName}).
 
 
 `;
