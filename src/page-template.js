@@ -105,7 +105,7 @@ function renderContributingSection(projectData){
         ${projectData.contributors}
         
         ### Pull Request Guidelines
-        ${projectData.pullRequestGuideline}
+        ${projectData.pullRequestGuidelines}
 
         ### Code of Conduct
         ${projectData.codeOfConduct} `
@@ -142,7 +142,7 @@ function renderContributingSection(projectData){
         ${projectData.contributingTopGuidelines}
         
         ### Pull Request Guidelines
-        ${projectData.pullRequestGuideline}
+        ${projectData.pullRequestGuidelines}
 
         ### Code of Conduct
         ${projectData.codeOfConduct}
@@ -153,7 +153,7 @@ function renderContributingSection(projectData){
         ${projectData.contributingTopGuidelines}
         
         ### Pull Request Guidelines
-        ${projectData.pullRequestGuideline}`
+        ${projectData.pullRequestGuidelines}`
     } else if (projectData.codeOfConduct) {
         return `## Contributing
         ${projectData.contributingTopGuidelines}
@@ -195,6 +195,7 @@ function generateMarkdown(projectData) {
   ${renderContributingSection(projectData)}
 
   ## Tests
+  ${projectData.projectTests}
 
   ## Questions
   If you have questions about this project:
