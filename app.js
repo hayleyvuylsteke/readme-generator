@@ -129,10 +129,52 @@ const promptUser = projectData => {
               }
             }
           },
+          {
+            type: 'input',
+            name: 'contributingTopGuidelines',
+            message: 'Enter any intro text to your contributing section.',
+            validate: nameInput => {
+                if (nameInput) {
+                  return true;
+                } else {
+                  console.log('You need to enter your contributing data!');
+                  return false;
+                }
+              }
+          },
+          {
+            type: 'input',
+            name: 'contributors',
+            message: 'Who contributed to this project?'
+          },
+          {
+            type: 'confirm',
+            name: 'confirmPullRequest',
+            message: 'Do you have a specific pull request procedure?',
+            default: true
+          },
+          {
+            type: 'input',
+            name: 'pullRequestGuidelines',
+            message: 'Please describe your pull request process:',
+            when: ({ confirmPullRequest }) => confirmPullRequest
+          },
+          {
+            type: 'confirm',
+            name: 'confirmCodeOfConduct',
+            message: 'Do you have a code of conduct?',
+            default: true
+          },
+          {
+            type: 'input',
+            name: 'codeOfConduct',
+            message: 'Please describe your code of conduct:',
+            when: ({ confirmCodeOfConduct }) => confirmCodeOfConduct
+          },
     ])
 };
 
-const promptContributing = contributingData => {
+/*const promptContributing = contributingData => {
     console.log(`
     =================
     I have a few questions about contributing to your project
@@ -183,18 +225,32 @@ const promptContributing = contributingData => {
             when: ({ confirmCodeOfConduct }) => confirmCodeOfConduct
           },
     ])
-};
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+};*/
 
 // TODO: Create a function to initialize app
 
-promptUser()
+promptUser().then(projectData => {
+    const projectDataSend = generateMarkdown(projectData);
+    console.log(projectDataSend);
+    
+    fs.writeFile('README.md', projectDataSend, err => {
+        if (err) throw new Error(err);
+    
+        console.log('Your Readme file has been created! Check out README.md in this directory to see it!');
+      });
+})
+
+
+
+/*promptUser()
   .then(promptContributing)
   .then(projectData => {
-    const projectDataInfo = generatePage(projectData)
+      console.log(projectData)
+
+   // const projectDataInfo = generateMarkdown(projectData)
   .then(contributingData => {
-    const contributingDataInfo = generatePage(contributingData)
+    console.log(contributingData)
+  //  const contributingDataInfo = generateMarkdown(contributingData)
     })
 
     fs.writeFile('./README.md', (projectDataInfo + contributingDataInfo), err => {
@@ -202,7 +258,7 @@ promptUser()
 
       console.log('Your Readme file has been created! Check out README.md in this directory to see it!');
     });
-  });
+  });*/
 
 // Function call to initialize app
 //init();
