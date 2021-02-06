@@ -1,42 +1,47 @@
-# t
+# Hayleys readme
 
-  [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
   ## Description
-  s
+  This generates a readmefile
 
   ## Table of Contents
-  - [Installation] (#Installation)
-  - [Usage] (#Usage)   - [License] (#License)
-  - [Contributing] (#Contributing)
-  - [Tests] (#Tests)
-  - [Questions] (#Questions)
+  - [Installation](#Install)
+  - [Usage](#Usage) 
+  - [License](#Licensing)
+  - [Contributing](#Contributing)
+  - [Tests](#Tests)
+  - [Questions](#Questions)
 
   ## Installation
-  s
+  fs, inquirer and node
 
   ## Usage
-  s
+  to make readmes
 
-  ## Licensing<br><br>This project has a [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html) license. ## Contributing
-        dfds
+  ## Licensing
+  This project has a [MIT](https://opensource.org/licenses/MIT) license. 
+  
+  ## Contributing
+  intro contributing text
 
-        ### Contributors
-        dgdg
-        
-        ### Pull Request Guidelines
-        undefined
+  ### Contributors
+  Me
 
-        ### Code of Conduct
-        sffsd 
+  
+  
+
+  ### Code of Conduct
+  testing code of conduct
 
   ## Tests
+  none
 
   ## Questions
   If you have questions about this project:
-  t
+  callme
 
   ### Project Owner Contact Information
-  [t](mailto:t). You can find me on GitHub [here](https://github.com/t).
+  [hayleyvuylsteke@gmail.com](mailto:hayleyvuylsteke@gmail.com). You can find me on GitHub [here](https://github.com/hayleyvuylsteke).
 
 

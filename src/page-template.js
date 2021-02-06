@@ -45,127 +45,70 @@ let licenseBadge = function renderLicenseBadge(projectLicense) {
 // If there is no license, return an empty string
 function renderLicenseLink (projectLicense) {
     if (projectLicense) {
-        return "  - [License] (#License)"
+        return   `  - [License](#Licensing)`
     } else {
         return ""
     }
 }
+const breakPoint = "<br>"
+const paragraph = "<p>"
+const paragraphClose = "</p>"
+
+
+const renderLicenseHeader = (projectLicense) => (projectLicense ? `## Licensing` : "")
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(projectLicense) {
     if (projectLicense === 'Apache License 2.0') {
-        return "## Licensing<br><br>This project has an [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt) license."
-
+        return "This project has an [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt) license."
+        
      } else if (projectLicense === 'GNU General Public License v3.0') {
-        return "## Licensing<br><br>This project has a [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html) license."
+        return "This project has a [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html) license."
      
     } else if (projectLicense === 'MIT License') {
-        return "## Licensing<br><br>This project has a [MIT](https://opensource.org/licenses/MIT) license."
+        return "This project has a [MIT](https://opensource.org/licenses/MIT) license."
     
     } else if (projectLicense === 'BSD 2-Clause "Simplified" License') {
-        return "## Licensing<br><br>This project has a [BSD 2-Clause Simplified License](https://opensource.org/licenses/BSD-2-Clause) license."
+        return "This project has a [BSD 2-Clause Simplified License](https://opensource.org/licenses/BSD-2-Clause) license."
     
     } else if (projectLicense === 'BSD 3-Clause "New" or "Revised" License') {
-        return "## Licensing<br><br>This project has a [BSD 3-Clause New or Revised License](https://choosealicense.com/licenses/bsd-3-clause/) license."
+        return "This project has a [BSD 3-Clause New or Revised License](https://choosealicense.com/licenses/bsd-3-clause/) license."
     
     } else if (projectLicense === 'Boost Software License 1.0') {
-        return "## Licensing<br><br>This project has a [Boost Software License 1.0](https://www.boost.org/LICENSE_1_0.txt) license."
+        return "This project has a [Boost Software License 1.0](https://www.boost.org/LICENSE_1_0.txt) license."
     
     } else if (projectLicense === 'Creative Commons Zero v1.0 Universal') {
-        return "## Licensing<br><br>This project has a [Creative Commons Zero v1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/) license."
+        return "This project has a [Creative Commons Zero v1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/) license."
     
     } else if (projectLicense === 'Eclipse Public License 2.0') {
-        return "## Licensing<br><br>This project has a [Eclipse Public License 2.0](https://www.eclipse.org/legal/epl-2.0/) license."
+        return "This project has a [Eclipse Public License 2.0](https://www.eclipse.org/legal/epl-2.0/) license."
     
     } else if (projectLicense === 'GNU Affero General Public License v3.0') {
-        return "## Licensing<br><br>This project has a [GNU Affero General Public License v3.0](https://www.gnu.org/licenses/agpl-3.0.en.html) license."
+        return "This project has a [GNU Affero General Public License v3.0](https://www.gnu.org/licenses/agpl-3.0.en.html) license."
     
     } else if (projectLicense === 'GNU General Public License v2.0') {
-        return "## Licensing<br><br>This project has a [GNU General Public License v2.0](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html) license."
+        return "This project has a [GNU General Public License v2.0](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html) license."
     
     } else if (projectLicense === 'Mozilla Public License 2.0') {
-        return "## Licensing<br><br>This project has a [Mozilla Public License 2.0](https://www.mozilla.org/en-US/MPL/2.0/) license."
+        return "This project has a [Mozilla Public License 2.0](https://www.mozilla.org/en-US/MPL/2.0/) license."
     
     } else if (projectLicense === 'The Unlicense') {
-        return "## Licensing<br><br>This project has a [The Unlicense](https://unlicense.org/) license."
+        return "This project has a [The Unlicense](https://unlicense.org/) license."
     
     } else {
         return ""
     }
 }
+const renderContributorsHeader = (contributors) => (contributors ? `### Contributors` : "")
+const renderContributorsText = (contributors) => (contributors ? `${contributors}` : "")
 
-function renderContributingSection(projectData){
-    if (projectData.contributors && projectData.pullRequestGuidelines && projectData.codeOfConduct){
-        
-        return `## Contributing
-        ${projectData.contributingTopGuidelines}
+const renderpullRequestHeader = (pullRequestGuidelines) => (pullRequestGuidelines ? `### Pull Request Guidelines` : "")
+const renderPullRequestText = (pullRequestGuidelines) => (pullRequestGuidelines ? `${pullRequestGuidelines}` : "")
 
-        ### Contributors
-        ${projectData.contributors}
-        
-        ### Pull Request Guidelines
-        ${projectData.pullRequestGuidelines}
+const renderCodeofConductHeader = (codeOfConduct) => (codeOfConduct ? `### Code of Conduct` : "")
+const renderCodeofConductText = (codeOfConduct) => (codeOfConduct ? `${codeOfConduct}` : "")
 
-        ### Code of Conduct
-        ${projectData.codeOfConduct} `
-
-    } else if (projectData.contributors && projectData.pullRequestGuidelines) {
-        return `## Contributing
-        ${projectData.contributingTopGuidelines}
-
-        ### Contributors
-        ${projectData.contributors}
-        
-        ### Pull Request Guidelines
-        ${projectData.pullRequestGuidelines} `
-
-    } else if (projectData.contributors && projectData.codeOfConduct) {
-        return `## Contributing
-        ${projectData.contributingTopGuidelines}
-
-        ### Contributors
-        ${projectData.contributors}
-
-        ### Code of Conduct
-        ${projectData.codeOfConduct}`
-
-    } else if (projectData.contributors) {
-        return `## Contributing
-        ${projectData.contributingTopGuidelines}
-
-        ### Contributors
-        ${projectData.contributors}
-        `
-    } else if (projectData.pullRequestGuidelines && projectData.codeOfConduct) {
-        return `## Contributing
-        ${projectData.contributingTopGuidelines}
-        
-        ### Pull Request Guidelines
-        ${projectData.pullRequestGuidelines}
-
-        ### Code of Conduct
-        ${projectData.codeOfConduct}
-        
-        `
-    } else if (projectData.pullRequestGuidelines) {
-        return `## Contributing
-        ${projectData.contributingTopGuidelines}
-        
-        ### Pull Request Guidelines
-        ${projectData.pullRequestGuidelines}`
-    } else if (projectData.codeOfConduct) {
-        return `## Contributing
-        ${projectData.contributingTopGuidelines}
-        
-        ### Code of Conduct
-        ${projectData.codeOfConduct}`
-
-    } else {
-        return `## Contributing
-        ${projectData.contributingTopGuidelines}`
-    }
-}
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(projectData) {
@@ -177,12 +120,12 @@ function generateMarkdown(projectData) {
   ${projectData.projectDescription}
 
   ## Table of Contents
-  - [Installation] (#Installation)
-  - [Usage] (#Usage) 
-  ${renderLicenseLink(projectData.projectLicense)}
-  - [Contributing] (#Contributing)
-  - [Tests] (#Tests)
-  - [Questions] (#Questions)
+  - [Installation](#Install)
+  - [Usage](#Usage) 
+${renderLicenseLink(projectData.projectLicense)}
+  - [Contributing](#Contributing)
+  - [Tests](#Tests)
+  - [Questions](#Questions)
 
   ## Installation
   ${projectData.projectInstallation}
@@ -190,9 +133,20 @@ function generateMarkdown(projectData) {
   ## Usage
   ${projectData.projectUsage}
 
+  ${renderLicenseHeader(projectData.projectLicense)}
   ${renderLicenseSection(projectData.projectLicense)} 
   
-  ${renderContributingSection(projectData)}
+  ## Contributing
+  ${projectData.contributingTopGuidelines}
+
+  ${renderContributorsHeader(projectData.contributors)}
+  ${renderContributorsText(projectData.contributors)}
+
+  ${renderpullRequestHeader(projectData.pullRequestGuidelines)}
+  ${renderPullRequestText(projectData.pullRequestGuidelines)}
+
+  ${renderCodeofConductHeader(projectData.codeOfConduct)}
+  ${renderCodeofConductText(projectData.codeOfConduct)}
 
   ## Tests
   ${projectData.projectTests}
